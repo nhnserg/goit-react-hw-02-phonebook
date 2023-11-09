@@ -7,9 +7,9 @@ class Filter extends Component {
 
     return (
       <label className={styles.label}>
-        Filter contacts:
         <input
           type="text"
+          placeholder="Filter contacts:"
           value={value}
           onChange={e => onChange(e.target.value)}
           className={styles.input}
