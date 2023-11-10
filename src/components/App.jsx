@@ -26,7 +26,6 @@ export class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     const { name, number, contacts } = this.state;
 
     if (name.trim() === '' || number.trim() === '') {
@@ -73,7 +72,7 @@ export class App extends Component {
           name={name}
           number={number}
           onChange={this.handleChange}
-          onSubmit={this.handleSubmit}
+          onSubmit={(event) => this.handleSubmit(event)}
         />
         <h2 className={styles.subtitle}>Contacts</h2>
         <Filter value={filter} onChange={this.handleFilterChange} />
