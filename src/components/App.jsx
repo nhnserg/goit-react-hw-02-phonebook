@@ -6,7 +6,7 @@ import styles from './App.module.css';
 
 
 
-export class App extends Component {
+class App extends Component {
   state = {
     contacts: [],
     filter: '',
@@ -20,11 +20,9 @@ export class App extends Component {
         contacts: [...prevState.contacts, newContact],
       }));
     } else {
-      alert('This name is alredy in contacts');
+      alert('This name is already in contacts');
     }
-
   };
-
 
   deleteContact = (id) => {
     this.setState((prevState) => ({
@@ -35,22 +33,21 @@ export class App extends Component {
   handleFilterChange = (filter) => {
     this.setState({ filter });
   };
+
   render() {
     const { contacts, filter } = this.state;
-    const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()))
+    const filteredContacts = contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
 
     return (
-      <div className={styles.container}>
-        <h1 className={styles.title}>Phonebook</h1>
+      <div className="container">
+        <h1 className="title">Phonebook</h1>
         <ContactForm addContact={this.addContact} />
-        <h2 className={styles.subtitle}>Contacts</h2>
+        <h2 className="subtitle">Contacts</h2>
         <Filter value={filter} onChange={this.handleFilterChange} />
-        <ContactList
-          contacts={filteredContacts}
-          onDelete={this.deleteContact} />
-
-
+        <ContactList contacts={filteredContacts} onDelete={this.deleteContact} />
       </div>
     );
-  };
+  }
 }
