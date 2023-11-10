@@ -8,3 +8,10 @@
   border: 1px solid #ddd;
   border-radius: 4px;
 }
+.filter {
+  margin-bottom: 20px;
+}
+
+.filter input {
+  padding: 8px;
+}
