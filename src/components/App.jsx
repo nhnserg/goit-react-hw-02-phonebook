@@ -24,8 +24,8 @@ export class App extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
     const { name, number, contacts } = this.state;
 
     if (name.trim() === '' || number.trim() === '') {
