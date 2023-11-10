@@ -13,10 +13,18 @@ export class App extends Component {
   };
 
   addContact = (newContact) => {
-    this.setState((prevState) => ({
-      contacts: [...prevState.contacts, newContact],
-    }));
-  }
+    const isNameUnique = !this.state.contacts.some((contact) => contact.name === newContact.name);
+
+    if (isNameUnique) {
+      this.setState((prevState) => ({
+        contacts: [...prevState.contacts, newContact],
+      }));
+    } else {
+      alert('This name is alredy in contacts');
+    }
+
+  };
+
 
   deleteContact = (id) => {
     this.setState((prevState) => ({
@@ -34,7 +42,7 @@ export class App extends Component {
     return (
       <div className={styles.container}>
         <h1 className={styles.title}>Phonebook</h1>
-        <ContactForm contacts={contacts} addContact={this.addContact} />
+        <ContactForm addContact={this.addContact} />
         <h2 className={styles.subtitle}>Contacts</h2>
         <Filter value={filter} onChange={this.handleFilterChange} />
         <ContactList
