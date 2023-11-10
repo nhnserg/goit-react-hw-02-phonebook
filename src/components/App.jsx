@@ -41,10 +41,10 @@ class App extends Component {
     );
 
     return (
-      <div className="container">
-        <h1 className="title">Phonebook</h1>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
-        <h2 className="subtitle">Contacts</h2>
+        <h2 className={styles.subtitle}>Contacts</h2>
         <Filter value={filter} onChange={this.handleFilterChange} />
         <ContactList contacts={filteredContacts} onDelete={this.deleteContact} />
       </div>
