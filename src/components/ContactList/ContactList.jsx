@@ -1,26 +1,24 @@
-import styles from './ContactList.module.css';
+import styles from './ContactList.module.css'
+import { Component } from 'react';
 
-const ContactList = ({ contacts, filter, onDelete }) => {
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+class ContactList extends Component {
+  render() {
+    const { contacts, onDeleteContact } = this.props;
 
-  return (
-    <ul className={styles.list}>
-      {filteredContacts.map((contact) => (
-        <li key={contact.id} className={styles.item}>
-          {contact.name}: {contact.number}
-          <button
-            type="button"
-            onClick={() => onDelete(contact.id)}
-            className={styles.deleteButton}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
-  );
-};
+    return (
+      <ul className={styles.contactList}>
+        {contacts.map((contact) => (
+          <li key={contact.id} className={styles.contactItem}>
+            {contact.name}: {contact.number}
+            <button onClick={() => onDeleteContact(contact.id)} className={styles.button}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
+
 
 export default ContactList;
